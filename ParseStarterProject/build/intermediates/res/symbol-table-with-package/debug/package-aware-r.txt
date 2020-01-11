@@ -1106,6 +1106,7 @@ id submenuarrow
 id submit_area
 id subtitle
 id subtitle_view
+id switchButton
 id tabMode
 id tab_host
 id terrain
@@ -1194,6 +1195,8 @@ layout select_dialog_singlechoice_material
 layout support_simple_spinner_dropdown_item
 mipmap ic_launcher
 raw gtm_analytics
+string Orlogin
+string Orsingup
 string abc_action_bar_home_description
 string abc_action_bar_home_description_format
 string abc_action_bar_home_subtitle_description_format

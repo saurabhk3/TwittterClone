@@ -15,10 +15,12 @@ import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.Switch;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.parse.LogInCallback;
@@ -34,6 +36,9 @@ import com.parse.SignUpCallback;
 public class MainActivity extends AppCompatActivity implements View.OnClickListener,View.OnKeyListener{
 
   EditText username ,password;
+  Boolean isLogin = true;
+  Button submitButton ;
+  TextView switchTextView;
 
   @Override
   public boolean onKey(View view, int i, KeyEvent keyEvent) {
@@ -45,7 +50,19 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
   @Override
   public void onClick(View view) {
-    if(view.getId()==R.id.imageView || view.getId()==R.id.background){
+    if(view.getId()==R.id.switchButton ){
+      Toast.makeText(MainActivity.this,"Hmm",Toast.LENGTH_SHORT).show();
+      if(isLogin) {
+        isLogin = false;
+        submitButton.setText("Sign up");
+        switchTextView.setText("Or, Login");
+
+      }else{
+        isLogin = true;
+        submitButton.setText("Login");
+        switchTextView.setText("Or, Sign up");
+      }
+    } else if(view.getId()==R.id.imageView || view.getId()==R.id.background){
       Log.i("Imge","Clicked");
       InputMethodManager imm = (InputMethodManager)getSystemService(INPUT_METHOD_SERVICE);
       imm.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(),0);
@@ -59,39 +76,58 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     username = (EditText) findViewById(R.id.username);
     password = (EditText) findViewById(R.id.password);
+    submitButton = (Button) findViewById(R.id.button);
+    switchTextView = (TextView) findViewById(R.id.switchButton);
     RelativeLayout layout = (RelativeLayout) findViewById(R.id.background);
     ImageView logo = (ImageView) findViewById(R.id.imageView);
     username.setOnKeyListener(this);
     password.setOnKeyListener(this);
     layout.setOnClickListener(this);
     logo.setOnClickListener(this);
+    switchTextView.setOnClickListener(this);
 
 
     
     ParseAnalytics.trackAppOpenedInBackground(getIntent());
   }
   public void submit(View view){
-    Log.i("username:",username.getText().toString());
-    Log.i("pass:",password.getText().toString());
-
     String user = username.getText().toString();
     String pass = password.getText().toString();
 
-    ParseUser parseUser = new ParseUser();
-    parseUser.setUsername(user);
-    parseUser.setPassword(pass);
+    if(user.equals("")| pass.equals("")){
+      Toast.makeText(this, "Username/Password Required!", Toast.LENGTH_SHORT).show();
+    }else {
+      if (!isLogin) {// sign up user
+        ParseUser parseUser = new ParseUser();
+        parseUser.setUsername(user);
+        parseUser.setPassword(pass);
 
-    parseUser.signUpInBackground(new SignUpCallback() {
-      @Override
-      public void done(ParseException e) {
-        if(e==null){
-          Toast.makeText(MainActivity.this, "Successfully signed up", Toast.LENGTH_SHORT).show();
-        }else{
-          e.printStackTrace();
-        }
+        parseUser.signUpInBackground(new SignUpCallback() {
+          @Override
+          public void done(ParseException e) {
+            if (e == null) {
+              Toast.makeText(MainActivity.this, "Successfully signed up", Toast.LENGTH_SHORT).show();
+            } else {
+              Toast.makeText(MainActivity.this, e.getMessage(), Toast.LENGTH_SHORT).show();
+              e.printStackTrace();
+            }
+          }
+        });
+      } else {
+        // login
+        ParseUser.logInInBackground(user, pass, new LogInCallback() {
+          @Override
+          public void done(ParseUser user, ParseException e) {
+            if (e == null && user != null) {
+              Toast.makeText(MainActivity.this, "Successfully Logged-in", Toast.LENGTH_SHORT).show();
+            } else {
+              Toast.makeText(MainActivity.this, e.getMessage(), Toast.LENGTH_SHORT).show();
+              e.printStackTrace();
+            }
+          }
+        });
       }
-    });
-
+    }
   }
 
 }
