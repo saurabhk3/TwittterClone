@@ -108,21 +108,6 @@
             ]
         },
         {
-            "outputFile": "/home/saurabh/AndroidStudioProjects/TwittterClone/ParseStarterProject/build/intermediates/res/merged/debug/values-v13_values-v13.arsc.flat",
-            "map": [
-                {
-                    "source": "/home/saurabh/.gradle/caches/transforms-2/files-2.1/9a6531c0dfcfb5db10c7a2464724ee2d/appcompat-v7-24.0.0/res/values-v13/values-v13.xml",
-                    "from": {
-                        "startLines": "2",
-                        "startColumns": "4",
-                        "startOffsets": "55",
-                        "endColumns": "58",
-                        "endOffsets": "109"
-                    }
-                }
-            ]
-        },
-        {
             "outputFile": "/home/saurabh/AndroidStudioProjects/TwittterClone/ParseStarterProject/build/intermediates/res/merged/debug/values-zu_values-zu.arsc.flat",
             "map": [
                 {
@@ -259,6 +244,21 @@
                         "startOffsets": "10395",
                         "endColumns": "105",
                         "endOffsets": "10496"
+                    }
+                }
+            ]
+        },
+        {
+            "outputFile": "/home/saurabh/AndroidStudioProjects/TwittterClone/ParseStarterProject/build/intermediates/res/merged/debug/values-v13_values-v13.arsc.flat",
+            "map": [
+                {
+                    "source": "/home/saurabh/.gradle/caches/transforms-2/files-2.1/9a6531c0dfcfb5db10c7a2464724ee2d/appcompat-v7-24.0.0/res/values-v13/values-v13.xml",
+                    "from": {
+                        "startLines": "2",
+                        "startColumns": "4",
+                        "startOffsets": "55",
+                        "endColumns": "58",
+                        "endOffsets": "109"
                     }
                 }
             ]
@@ -1768,28 +1768,6 @@
             ]
         },
         {
-            "outputFile": "/home/saurabh/AndroidStudioProjects/TwittterClone/ParseStarterProject/build/intermediates/res/merged/debug/values-en-rSG_values-en-rSG.arsc.flat",
-            "map": [
-                {
-                    "source": "/home/saurabh/.gradle/caches/transforms-2/files-2.1/6a170f1f876f5475bb8ac11bb9b29934/play-services-wallet-9.4.0/res/values-en-rSG/values.xml",
-                    "from": {
-                        "startLines": "4",
-                        "startColumns": "4",
-                        "startOffsets": "292",
-                        "endColumns": "103",
-                        "endOffsets": "391"
-                    },
-                    "to": {
-                        "startLines": "2",
-                        "startColumns": "4",
-                        "startOffsets": "55",
-                        "endColumns": "103",
-                        "endOffsets": "154"
-                    }
-                }
-            ]
-        },
-        {
             "outputFile": "/home/saurabh/AndroidStudioProjects/TwittterClone/ParseStarterProject/build/intermediates/res/merged/debug/values-kk-rKZ_values-kk-rKZ.arsc.flat",
             "map": [
                 {
@@ -1824,6 +1802,28 @@
                         "startOffsets": "1999,2113,2226,2330,2432,2557,2655,2751,2872,2985,3069",
                         "endColumns": "113,112,103,101,124,97,95,120,112,83,96",
                         "endOffsets": "2108,2221,2325,2427,2552,2650,2746,2867,2980,3064,3161"
+                    }
+                }
+            ]
+        },
+        {
+            "outputFile": "/home/saurabh/AndroidStudioProjects/TwittterClone/ParseStarterProject/build/intermediates/res/merged/debug/values-en-rSG_values-en-rSG.arsc.flat",
+            "map": [
+                {
+                    "source": "/home/saurabh/.gradle/caches/transforms-2/files-2.1/6a170f1f876f5475bb8ac11bb9b29934/play-services-wallet-9.4.0/res/values-en-rSG/values.xml",
+                    "from": {
+                        "startLines": "4",
+                        "startColumns": "4",
+                        "startOffsets": "292",
+                        "endColumns": "103",
+                        "endOffsets": "391"
+                    },
+                    "to": {
+                        "startLines": "2",
+                        "startColumns": "4",
+                        "startOffsets": "55",
+                        "endColumns": "103",
+                        "endOffsets": "154"
                     }
                 }
             ]

@@ -21,4 +21,6 @@
     <string name="passHint">password</string>
     <string name="login">Login</string>
     <string name="singup">Sign up</string>
+    <string name="Orlogin">Or, Login</string>
+    <string name="Orsingup">Or, Sign up</string>
 </resources>

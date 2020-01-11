@@ -920,6 +920,7 @@ id art
 id audio_empty_message
 id audio_list_view
 id auto
+id background
 id background_image_view
 id background_place_holder_image_view
 id barrier
