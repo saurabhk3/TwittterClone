@@ -32,6 +32,8 @@ import com.parse.ParseUser;
 import com.parse.SaveCallback;
 import com.parse.SignUpCallback;
 
+import java.util.ArrayList;
+
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener,View.OnKeyListener{
 
@@ -54,6 +56,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
       Toast.makeText(MainActivity.this,"Hmm",Toast.LENGTH_SHORT).show();
       if(isLogin) {
         isLogin = false;
+        password.setText("");
         submitButton.setText("Sign up");
         switchTextView.setText("Or, Login");
 
@@ -61,6 +64,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         isLogin = true;
         submitButton.setText("Login");
         switchTextView.setText("Or, Sign up");
+        password.setText("");
       }
     } else if(view.getId()==R.id.imageView || view.getId()==R.id.background){
       Log.i("Imge","Clicked");
@@ -68,11 +72,17 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
       imm.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(),0);
     }
   }
+  public void moveToNextActivity(){
+    Intent intent = new Intent(getApplicationContext(),UserListActivity.class);
+
+    startActivity(intent);
+  }
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_main);
+    setTitle("Twitter: Login/Sign-up");
 
     username = (EditText) findViewById(R.id.username);
     password = (EditText) findViewById(R.id.password);
@@ -91,7 +101,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     ParseAnalytics.trackAppOpenedInBackground(getIntent());
   }
   public void submit(View view){
-    String user = username.getText().toString();
+    final String user = username.getText().toString();
     String pass = password.getText().toString();
 
     if(user.equals("")| pass.equals("")){
@@ -107,9 +117,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
           public void done(ParseException e) {
             if (e == null) {
               Toast.makeText(MainActivity.this, "Successfully signed up", Toast.LENGTH_SHORT).show();
-            } else {
+              username.setText("");
+              password.setText("");
+              moveToNextActivity();
+            }else {
               Toast.makeText(MainActivity.this, e.getMessage(), Toast.LENGTH_SHORT).show();
               e.printStackTrace();
+              username.setText("");
+              password.setText("");
             }
           }
         });
@@ -120,9 +135,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
           public void done(ParseUser user, ParseException e) {
             if (e == null && user != null) {
               Toast.makeText(MainActivity.this, "Successfully Logged-in", Toast.LENGTH_SHORT).show();
+              username.setText("");
+              password.setText("");
+              moveToNextActivity();
             } else {
               Toast.makeText(MainActivity.this, e.getMessage(), Toast.LENGTH_SHORT).show();
               e.printStackTrace();
+              password.setText("");
             }
           }
         });

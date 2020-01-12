@@ -23,4 +23,8 @@
     <string name="singup">Sign up</string>
     <string name="Orlogin">Or, Login</string>
     <string name="Orsingup">Or, Sign up</string>
+    <string name="tweet">Tweet</string>
+    <string name="tweetHint">Write something here...</string>
+
+
 </resources>
